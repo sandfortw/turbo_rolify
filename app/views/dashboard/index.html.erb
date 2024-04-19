@@ -7,7 +7,9 @@
     </h1>
 
     <ul class="flex gap-5 text-blue-700" >
+    <% unless @current_user %>
         <li><%= link_to "Login", root_path %></li>
-        <li><%= link_to "Create Account", new_user_path%></li>
+        <li><%= link_to "Create Account", new_user_path%></li>       
+    <% end %>
     </ul>
 </div>

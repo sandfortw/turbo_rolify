@@ -16,16 +16,21 @@
 
       <div id="flash-banner">
         <% flash.each do |type, msg| %>
-          <div class="bg-red-500">
-            <%= "#{type}: #{msg}" %>
-          </div>
+          <% if type.upcase == 'ERROR' %>
+            <div class="bg-red-500">
+              <%= "#{type}: #{msg}" %>
+            </div>
+          <% end %>
         <% end %>
       </div>
       <nav>
       <ul class="flex gap-10 bg-blue-400">
       <li><%= link_to "Home", root_path %></li>
       <% if @current_user %>
-        <li><%= link_to "Admin Dashboard", user_admin_path(@current_user)  %></li>
+          <% #TODO: Fix Query jank %>
+          <% if @current_user.roles.where(name: 'admin') != []%>
+            <li><%= link_to "Admin Dashboard", user_admin_path(@current_user)  %></li>
+          <% end %>
         <li><%= link_to "User Dashboard", user_dashboard_path(@current_user) %></li>
         <li><%= link_to "Logout", logout_path%></li>
       <% end %>
