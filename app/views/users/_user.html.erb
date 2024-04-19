@@ -1,8 +1,22 @@
 <div id="<%= dom_id user %>">
   <% if action_name != "show" %>
-    <%= user.name %>
+    <p>Name:</p>
+    <p><%= user.name %></p>
+    <p>Role:</p>
+    <p><%= user.role %></p>
     <%= link_to "Show this user", user, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to "Edit this user", edit_user_path(user), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">
+    <%else %>
+    <ul class="flex justify-center gap-20">
+      <li>
+        <strong>Name:</strong>
+        <p><%= user.name %></p>
+      </li>
+      <li>
+        <strong>Role:</strong>
+        <p><%= user.role %></p>
+      </li>
+    </ul>
   <% end %>
 </div>
