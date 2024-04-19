@@ -16,7 +16,11 @@
       <nav>
       <ul>
       <li><%= link_to "Home", root_path %></li>
-      </ul>
+      <% if @current_user %>
+        <li><%= link_to "Admin Dashboard", user_admin_path(@current_user)  %></li>
+        <li><%= link_to "User Dashboard", user_dashboard_path(@current_user) %></li>
+      <% end %>
+      </ul>rai
       </nav>
       <%= yield %>
     </main>
