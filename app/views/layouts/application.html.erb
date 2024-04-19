@@ -13,14 +13,23 @@
 
   <body>
     <main class="container mx-auto mt-28 px-5 flex flex-col gap-10">
+
+      <div id="flash-banner">
+        <% flash.each do |type, msg| %>
+          <div class="bg-red-500">
+            <%= "#{type}: #{msg}" %>
+          </div>
+        <% end %>
+      </div>
       <nav>
-      <ul>
+      <ul class="flex gap-10 bg-blue-400">
       <li><%= link_to "Home", root_path %></li>
       <% if @current_user %>
         <li><%= link_to "Admin Dashboard", user_admin_path(@current_user)  %></li>
         <li><%= link_to "User Dashboard", user_dashboard_path(@current_user) %></li>
+        <li><%= link_to "Logout", logout_path%></li>
       <% end %>
-      </ul>rai
+      </ul>
       </nav>
       <%= yield %>
     </main>

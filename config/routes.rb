@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     get "admin" => "admin_dashboard#index"
     get "dashboard" => "user_dashboard#index"
   end
+
+  get "logout" => "logout#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

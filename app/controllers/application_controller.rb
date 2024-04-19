@@ -3,7 +3,11 @@ class ApplicationController < ActionController::Base
   before_action :set_current_user
 
   def set_current_user
-    @current_user ||= User.find(session[:user_id])
+    begin 
+      @current_user ||= User.find(session[:user_id])
+    rescue
+      @current_user = nil
+    end
   end
 
 end
