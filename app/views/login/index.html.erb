@@ -1,16 +1,19 @@
-<%= form_with(method: 'post', path: new_session_path) do |form| %>
-  <ul class="flex flex-col gap-3">
-    <li class="flex gap-3">
-      <%= form.label :name, "Username:" %>
-      <%= form.text_field :name %>
-    </li>
-    <li class="flex gap-3">
-      <%= form.label :password, "Password:" %>
-      <%= form.text_field :password %>
-    </li>
-  </ul>
-  
-    <div class="inline">
-      <%= form.submit "Log in", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer"%>
-    </div>
+<%= turbo_frame_tag "begin-session-container" do %>
+  <%= form_with(method: 'post', path: new_session_path) do |form| %>
+    <ul class="flex flex-col gap-3">
+      <li class="self-end"><%= link_to "X", root_path%></li>
+      <li class="flex gap-3">
+        <%= form.label :name, "Username:" %>
+        <%= form.text_field :name %>
+      </li>
+      <li class="flex gap-3">
+        <%= form.label :password, "Password:" %>
+        <%= form.text_field :password %>
+      </li>
+    </ul>
+    
+      <div class="inline">
+        <%= form.submit "Log in", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer"%>
+      </div>
+  <% end %>
 <% end %>
